@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header #header>
   <ion-toolbar>
 
     <ion-buttons slot="start">
@@ -20,16 +20,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  
-  <ion-segment [(ngModel)]="segment" mode="md">
-    <ion-segment-button value="home">
-      <ion-label>Home</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="content">
-      <ion-label>content-suggest</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+
+<ion-segment [(ngModel)]="segment" mode="md" #segmentcontrol>
+  <ion-segment-button value="home">
+    <ion-label>Home</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="content">
+    <ion-label>Explore</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+
+<ion-content [fullscreen]="true" [scrollEvents]="true" [appHideHeader]="header" [appStickySegment]="segmentcontrol">
 
   <ion-slides [options]="options">
     <ion-slide *ngFor="let tweet of tweets">
@@ -40,7 +42,7 @@
   </ion-slides>
 
   <div *ngIf="segment == 'home'">
-    <app-tweet *ngFor="let tweet of tweets"></app-tweet>
+    <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet"></app-tweet>
   </div>
 
   <div *ngIf="segment == 'content'">

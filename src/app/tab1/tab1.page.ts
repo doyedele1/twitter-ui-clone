@@ -10,8 +10,8 @@ export class Tab1Page implements OnInit {
   tweets = [];
   segment = 'home';
   options = {
-    slidesPerView: 4.5,
-    spaceBetween: 8,
+    slidesPerView: 4,
+    spaceBetween: 6,
     slidesOffsetBefore: 0
   };
 
